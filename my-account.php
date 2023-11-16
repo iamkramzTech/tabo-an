@@ -84,10 +84,10 @@
 
                                 <div class="form-floating mb-4">
                                 <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
-                                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off">
-                                 <label class="btn btn-outline-dark" for="vbtn-radio2">Customer</label>
-                                <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
-                                <label class="btn btn-outline-dark" for="vbtn-radio3">Vendor</label>
+                                <input type="radio" class="btn-check" name="vbtn-customer" id="vbtn-customer" autocomplete="off" checked>
+                                 <label class="btn btn-outline-dark" for="vbtn-radio2">I am Customer</label>
+                                <input type="radio" class="btn-check" name="vbtn-vendor" id="vbtn-vendor" autocomplete="off">
+                                <label class="btn btn-outline-dark" for="vbtn-radio3">I am Vendor</label>
                                 </div>
                                 </div>
 
