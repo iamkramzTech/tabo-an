@@ -19,7 +19,7 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#!">Home</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/about">About</a></li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -65,8 +65,8 @@
               <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
             <button class="btn btn-outline-dark ms-2" type="button">
-              <i class="bi-person"></i>
-              Account
+              
+             <a href="login" class="nav-link"><i class="bi-person"></i> Account</a>
             </button>
           </div>
         </div>

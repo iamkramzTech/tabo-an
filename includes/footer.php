@@ -7,8 +7,8 @@
       </div>
     </footer>
 
-<!--bootsrtap 5.2-->
-<script rel="stylesheet" href="/kramzcommerce/assets/js/bootstrap/bootstrap.bundle.min.css"></script>
-
+   <!-- Bootstrap core JS-->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
+
   </body>

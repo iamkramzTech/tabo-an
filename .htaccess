@@ -1,0 +1,9 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /kramzcommerce/
+
+#Redirect requests without .php extension to include it
+
+#Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

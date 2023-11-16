@@ -1,1 +1,0 @@
-INSERT INTO `administrator`(`username`, `email`, `pass`) VALUES ('adminer','kramztech10@gmail.com','admin!123')
