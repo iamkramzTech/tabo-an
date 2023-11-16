@@ -1,8 +1,8 @@
 
  <!-- Navigation-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">LOREM</a>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index">LOREM</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -66,7 +66,7 @@
             </button>
             <button class="btn btn-outline-dark ms-2" type="button">
               
-             <a href="login" class="nav-link"><i class="bi-person"></i> Account</a>
+             <a href="my-account" class="nav-link"><i class="bi-person"></i> Account</a>
             </button>
           </div>
         </div>
