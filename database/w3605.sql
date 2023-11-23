@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2023 at 08:06 PM
+-- Generation Time: Nov 23, 2023 at 02:50 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.2.11
 
@@ -31,6 +31,7 @@ CREATE TABLE `administrator` (
   `username` varchar(255) DEFAULT NULL,
   `email` varchar(254) NOT NULL,
   `pass` varchar(255) NOT NULL,
+  `user_role` tinyint(4) DEFAULT NULL,
   `id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,8 +39,8 @@ CREATE TABLE `administrator` (
 -- Dumping data for table `administrator`
 --
 
-INSERT INTO `administrator` (`username`, `email`, `pass`, `id`) VALUES
-('adminer', 'kramztech10@gmail.com', 'admin!123', 1);
+INSERT INTO `administrator` (`username`, `email`, `pass`, `user_role`, `id`) VALUES
+('adminer', 'kramztech10@gmail.com', '$2y$10$9MEgCAM917unBKhnEI7/4.xyynASOf6VWv19dfdACendWjbstl6wS', 0, 1);
 
 -- --------------------------------------------------------
 
