@@ -13,19 +13,19 @@
 <div class="d-flex align-items-start py-4 bg-body-tertiary">
     <div class="container px-4 px-lg-5">
         <div class="row justify-content-center">
-            <div class="col-lg-11">
+        <div class="col-lg-6 col-md-12 mb-4">
                 <div class="card shadow-lg">
                     <div class="card-body px-4 py-5 px-md-5">
                         <main class="form-signin">
-                            <img class="mb-4" src="/assets/bootstrap-logo.svg" alt="" width="72" height="57"/>
+                            <img class="mb-4" src="/kramzcommerce/assets/logo/account-icon.svg" alt="" width="72" height="57"/>
                             <h1 class="h3 mb-3 fw-normal">Login</h1>
                             <form>
                                 <div class="form-floating mb-4">
-                                    <input class="form-control" type="email" id="email" name="email" placeholder="yourname@example.com" required/>
+                                    <input class="form-control" type="email" id="signupEmail" name="email" placeholder="yourname@example.com" required/>
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
+                                    <input type="password" class="form-control" id="signupPassword" name="password" placeholder="Password" required/>
                                     <label for="password">Password</label>
                                 </div>
                                 <button type="submit" class="btn btn-outline-dark w-100 py-2">Login</button>
@@ -34,21 +34,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
+      
     
 <!--/wp:login-->
 
 <!--wp:register-->
 
-<div class="container px-4 px-lg-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-11">
+        <div class="col-lg-6 col-md-12">
                 <div class="card shadow-lg">
                     <div class="card-body px-4 py-5 px-md-5">
                         <main class="form-signin">
-                            <img class="mb-4" src="/assets/bootstrap-logo.svg" alt="" width="72" height="57"/>
+                            <img class="mb-4" src="/kramzcommerce/assets/logo/account-icon.svg" alt="" width="72" height="57"/>
                             <h1 class="h3 mb-3 fw-normal">Create Account</h1>
                             <form>
                                 <div class="row mb-4">
@@ -84,10 +80,10 @@
 
                                 <div class="form-floating mb-4">
                                 <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
-                                <input type="radio" class="btn-check" name="vbtn-customer" id="vbtn-customer" autocomplete="off" checked>
-                                 <label class="btn btn-outline-dark" for="vbtn-radio2">I am Customer</label>
-                                <input type="radio" class="btn-check" name="vbtn-vendor" id="vbtn-vendor" autocomplete="off">
-                                <label class="btn btn-outline-dark" for="vbtn-radio3">I am Vendor</label>
+                                <input type="radio" class="btn-check" name="btnradio" id="vbtn-customer" autocomplete="off">
+                                 <label class="btn btn-outline-dark" for="vbtn-customer">I am Customer</label>
+                                <input type="radio" class="btn-check" name="btnradio" id="vbtn-vendor" autocomplete="off">
+                                <label class="btn btn-outline-dark" for="vbtn-vendor">I am Vendor</label>
                                 </div>
                                 </div>
 
@@ -99,8 +95,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
+   </div>
 </div>
 
     </body>

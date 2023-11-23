@@ -1,15 +1,25 @@
+<?php 
+//noe;rofile icon nab
+include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';
+
+
+if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
+{
+   header("Location:../404");
+}
+?>
 <?php include('../admin/includes/adminheader.php')?>
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Administrator</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      <a class="nav-link px-3" href="../signout">Sign out</a>
     </div>
   </div>
 </header>
@@ -20,15 +30,15 @@
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="dashboard" >
               <span data-feather="home" class="align-text-bottom"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="file" class="align-text-bottom"></span>
-              Orders
+              <span data-feather="users" class="align-text-bottom"></span>
+              Vendors
             </a>
           </li>
           <li class="nav-item">
@@ -41,6 +51,18 @@
             <a class="nav-link" href="#">
               <span data-feather="users" class="align-text-bottom"></span>
               Customers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#brands" onclick="loadContent('brands.php')">
+              <span data-feather="file-plus" class="align-text-bottom"></span>
+              Brands
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#categories" onclick="loadContent('category.php')">
+              <span data-feather="plus-circle" class="align-text-bottom"></span>
+              Categories
             </a>
           </li>
           <li class="nav-item">
@@ -92,8 +114,9 @@
       </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="content">
+    <?php include('../admin/includes/adminheader.php')?>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
@@ -106,8 +129,46 @@
           </button>
         </div>
       </div>
+      <div class="container mt-5">
+    <div class="row">
+        <!-- Vendors Box -->
+        <div class="col-lg-3">
+        <a href="#vendors" class="text-decoration-none">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Vendors</h5>
+                    <p class="card-text">Total: 00</p>
+                </div>
+            </div>
+</a>
+        </div>
 
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+        <!-- Customers Box -->
+        <div class="col-lg-3">
+        <a href="#customers" class="text-decoration-none">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Customers</h5>
+                    <p class="card-text">Total: 00</p>
+                </div>
+            </div>
+</a>
+        </div>
+         <!-- Products Box -->
+         <div class="col-lg-3">
+         <a href="#products" class="text-decoration-none">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text">Total: 00</p>
+                </div>
+            </div>
+</a>
+        </div>
+    </div>
+</div>
+<h2>Chart</h2>
+<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
       <h2>Section title</h2>
       <div class="table-responsive">

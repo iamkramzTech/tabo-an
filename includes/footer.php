@@ -22,7 +22,7 @@
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
     </ul>
-    <p class="text-center text-muted">© 2022 Company, Inc</p>
+    <p class="text-center text-muted">© 2022 Capstone Project Group 1</p>
 
     <ul class="nav justify-content-center">
       <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
@@ -33,7 +33,7 @@
   
    <!-- Bootstrap core JS-->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+   <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 
 

@@ -3,6 +3,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// $file = __DIR__ .'/database/database.php';
+// print_r($file);
+// require_once(__DIR__ .'/database/database.php');
 ?>
 
 <?php

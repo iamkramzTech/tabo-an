@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anga-oy | Dashboard</title>
+    <title>Anga-oy | Admin</title>
 
 <!--bootsrtap 5.2-->
 <link rel="stylesheet" href="/kramzcommerce/assets/css/bootstrap/bootstrap.min.css">

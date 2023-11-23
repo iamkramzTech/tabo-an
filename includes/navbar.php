@@ -2,7 +2,7 @@
  <!-- Navigation-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index">LOREM</a>
+        <a class="navbar-brand" href="index">TABO-AN</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -17,10 +17,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#!">Home</a>
+              <a class="nav-link active" aria-current="page" href="index">Home</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="pages/about">About</a></li>
-            <li class="nav-item dropdown">
+            <li class="nav-item"><a class="nav-link" href="pages/about">Shop</a></li>
+            <!-- <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 id="navbarDropdown"
@@ -35,7 +36,7 @@
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-              </ul>
+              </ul> -->
             </li>
           </ul>
           <!-- <form class="d-flex">
