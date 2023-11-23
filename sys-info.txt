@@ -1,0 +1,27 @@
+Database server
+Server: 127.0.0.1 via TCP/IP
+Server type: MariaDB
+Server connection: SSL is not being used Documentation
+Server version: 10.4.18-MariaDB - mariadb.org binary distribution
+Protocol version: 10
+User: root@localhost
+Server charset: UTF-8 Unicode (utf8mb4)
+
+================
+
+Web server
+Apache/2.4.46 (Win64) OpenSSL/1.1.1j PHP/8.2.11
+Database client version: libmysql - mysqlnd 8.2.11
+PHP extension: mysqli Documentation curl Documentation mbstring Documentation
+PHP version: 8.2.11
+=============
+phpMyAdmin
+Version information: 5.2.1 (up to date)
+#########################
+Database connection: PDO
+Bootstrap version: Bootstrap  v5.2.3
+
+========
+username:adminer
+email: kramztech10@gmail.com
+pass: admin!123
