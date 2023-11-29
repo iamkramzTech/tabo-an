@@ -1,5 +1,22 @@
+<?php 
+// Enable error reporting for debugging (remove in production)
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/database/database.php');?>
 <?php
 //brands code
+// FETCH data from the "brands" table
+$query = "SELECT * FROM brand";
+
+//Prepare the statement
+$statement = $dbConn->prepare($query);
+
+//execute Query
+$statement->execute();
+
+// Fetch all rows as an associative array
+$brands = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <h2>Brands</h2>
@@ -19,13 +36,18 @@
           </thead>
 
         <tbody>
+            <?php foreach ($brands as $index=>$brand):?>
             <tr>
-            <td>1</td>
-              <td>Sample Brand</td>
-              <td>sample-brand</td>
-              <td>photo.jpeg</td>
-              <td><button type="button">View</button></td>
+            <td><?=$index+1?></td>
+              <td><?=$brand['brand_name']?></td>
+              <td><?=$brand['brand_slug']?></td>
+              <td><?=$brand['brand_image']?></td>
+              <td>
+                <button type="button" id="update" class="btn btn-success mr-auto">Update</button>
+                <button type="button" id="delete" class="btn btn-danger">Delete</button>
+            </td>
             </tr>
+            <?php endforeach; ?>
         </tbody>
         
 </table>    
@@ -47,7 +69,7 @@
             <div class="modal-body">
                 <!-- Your form for adding a new brand goes here -->
                 <!-- For example: -->
-                <form action="add_brand.php" method="post">
+                <form action="add-brand.php" method="POST" id="addBrandForm" enctype="multipart/form-data">
                 <div class="form-floating mb-4">
                    
                     <input type="text" class="form-control" name="brandName" id="brandName" required>
@@ -59,17 +81,59 @@
                     <label for="brandName">Choose Image:</label>   
                 </div>
                     <!-- Add other form fields as needed -->
-                
-            </div>
+                 <!-- Display success or error messages here -->
+                 <div id="messageContainer"></div>
+            
             <div class="modal-footer">
             
-            <button type="submit" name="submit" id="submit" class="btn btn-primary py-2 mr-auto">Save</button>
+            <button type="submit" name="save" id="save" class="btn btn-primary py-2 mr-auto">Save</button>
             <button type="button" id="cancel" data-bs-dismiss="modal" class="btn btn-secondary py-2">Cancel</button>
             </form>
             </div>
         </div>
     </div>
 </div>
+
 <?php include('../admin/includes/adminfooter.php')?>
+
+
+<!--JQuery Code to handle form submission -->
+<script>
+$(document).ready(function() {
+$("#addBrandForm").submit(function(e) {
+    e.preventDefault();
+
+    // Serialize form data
+    var formData = $(this).serialize();
+
+    // Submit the form using AJAX
+    $.ajax({
+        type: "POST",
+        url: "add-brand.php",
+        data: formData,
+        dataType: "json",
+        success: function(response) {
+        // Display success or error message
+        if (response.status === "success") 
+        {
+            $("#messageContainer").html('<div class="alert alert-success" role="alert">' + response.message + '</div>');
+            // Optionally, close the modal after success
+            setTimeout(function() 
+            {
+                $('#addBrandModal').modal('hide');
+            }, 2000); // Close the modal after 2 seconds
+        }
+        else 
+        {
+            $("#messageContainer").html('<div class="alert alert-danger" role="alert">' + response.message + '</div>');
+        }
+            },
+            error: function() {
+                $("#messageContainer").html('<div class="alert alert-danger" role="alert">An unexpected error occurred.</div>');
+            }
+        });
+    });
+});
+</script>
 
 

@@ -21,7 +21,7 @@ function redirect($userId,$role) {
     case 1:
         //vendor
         $_SESSION['vendor'] = $userId;
-        header('Location:merchants/dashboard');
+        header('Location:merchants/shop-setup');
         break;
 
     case 2:

@@ -2,7 +2,7 @@
  <!-- Navigation-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index">TABO-AN</a>
+        <a class="navbar-brand" href="index">TABOAN</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -19,7 +19,7 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="index">Home</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="pages/about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/about" rel="noreferrer noopener" target="_blank">About</a></li>
             <li class="nav-item"><a class="nav-link" href="pages/about">Shop</a></li>
             <!-- <li class="nav-item dropdown">
               <a
@@ -60,11 +60,11 @@
             </button>
           </form>
           <div class="d-flex ms-3">
-            <button class="btn btn-outline-dark" type="button">
+            <!-- <button class="btn btn-outline-dark" type="button">
               <i class="bi-cart-fill me-1"></i>
               Cart
               <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-            </button>
+            </button> -->
             <button class="btn btn-outline-dark ms-2" type="button">
               
              <a href="my-account" class="nav-link"><i class="bi-person"></i> Account</a>

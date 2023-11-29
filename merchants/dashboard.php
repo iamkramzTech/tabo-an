@@ -3,30 +3,37 @@
 include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';
 
 
-if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
-{
-   header("Location:../404");
-}
-// else
+// if(!isset($_SESSION['vendor']) || trim($_SESSION['vendor'])=='')
 // {
-//   $admin_id=$_SESSION['admin'];
- 
+//    header("Location:../404");
 // }
 ?>
-<?php include('../admin/includes/adminheader.php')?>
-  <body>
-    
+<?php include('../merchants/includes/header.php')?>
+  <body>   
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Administrator</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Vendor</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="../signout">Sign out</a>
+    
+  <div class="nav-item dropdown text-nowrap">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle px-3" href="#" role="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person"></i>
+sss
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+          <li><a class="dropdown-item" href="#">My Profile</a></li>
+         
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+      </div>
     </div>
   </div>
+
 </header>
 
 <div class="container-fluid">
@@ -43,7 +50,7 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="users" class="align-text-bottom"></span>
-              Vendors
+              Orders
             </a>
           </li>
           <li class="nav-item">
@@ -55,19 +62,13 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="users" class="align-text-bottom"></span>
-              Customers
+              Customer
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#brands" onclick="loadContent('brands.php')">
-              <span data-feather="file-plus" class="align-text-bottom"></span>
-              Brands
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#categories" onclick="loadContent('category.php')">
-              <span data-feather="plus-circle" class="align-text-bottom"></span>
-              Categories
+            <a class="nav-link" href="#">
+              <span data-feather="external-link" class="align-text-bottom"></span>
+              Visit Store
             </a>
           </li>
           <li class="nav-item">
@@ -120,7 +121,7 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="content">
-    <?php include('../admin/includes/adminheader.php')?>
+    <?php include('../merchants/includes/header.php')?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -141,8 +142,8 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
         <a href="#vendors" class="text-decoration-none">
             <div class="card bg-info text-white">
                 <div class="card-body">
-                    <h5 class="card-title">Vendors</h5>
-                    <p class="card-text">Total: 00</p>
+                    <h5 class="card-title">Orders</h5>
+                    <p class="card-text">Processing: 00</p>
                 </div>
             </div>
 </a>
@@ -153,8 +154,8 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
         <a href="#customers" class="text-decoration-none">
             <div class="card bg-warning text-white">
                 <div class="card-body">
-                    <h5 class="card-title">Customers</h5>
-                    <p class="card-text">Total: 00</p>
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text">No.: 3</p>
                 </div>
             </div>
 </a>
@@ -164,15 +165,15 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
          <a href="#products" class="text-decoration-none">
             <div class="card bg-success text-white">
                 <div class="card-body">
-                    <h5 class="card-title">Products</h5>
-                    <p class="card-text">Total: 00</p>
+                    <h5 class="card-title">Customer</h5>
+                    <p class="card-text">No. 00</p>
                 </div>
             </div>
 </a>
         </div>
     </div>
 </div>
-<h2>Chart</h2>
+<h2>Reports</h2>
 <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
       <h2>Section title</h2>
@@ -306,6 +307,12 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
     </main>
   </div>
 </div>
-<?php include('../admin/includes/adminfooter.php')?>
+
+<?php
+include('../merchants/includes/footer.php')
+?>
+
+
+
 
   </body>

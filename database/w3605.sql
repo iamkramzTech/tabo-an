@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 02:50 PM
+-- Generation Time: Nov 27, 2023 at 07:39 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.2.11
 
@@ -55,6 +55,14 @@ CREATE TABLE `brand` (
   `brand_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `brand`
+--
+
+INSERT INTO `brand` (`brand_name`, `brand_image`, `brand_slug`, `brand_id`) VALUES
+('PureFoods', 'purefoods.jpg', 'purefoods', 1),
+('No Brand', 'noimage.jpg', 'no-brand', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -79,6 +87,16 @@ CREATE TABLE `category` (
   `slug` varchar(25) NOT NULL,
   `category_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`name`, `slug`, `category_id`) VALUES
+('Groceries and Food', 'groceries-and-food', 1),
+('Uncategorized', 'uncategorized', 2),
+('Fruits', 'fruits', 3),
+('Vegetables', 'vegetables', 4);
 
 -- --------------------------------------------------------
 
@@ -387,7 +405,7 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `brand_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `brand_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -399,7 +417,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `delivery`
