@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2023 at 07:39 AM
+-- Generation Time: Nov 30, 2023 at 04:34 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.2.11
 
@@ -61,7 +61,8 @@ CREATE TABLE `brand` (
 
 INSERT INTO `brand` (`brand_name`, `brand_image`, `brand_slug`, `brand_id`) VALUES
 ('PureFoods', 'purefoods.jpg', 'purefoods', 1),
-('No Brand', 'noimage.jpg', 'no-brand', 2);
+('No Brand', 'noimage.jpg', 'no-brand', 2),
+('Magnolia', 'Magnolia.jpg', 'magnolia', 3);
 
 -- --------------------------------------------------------
 
@@ -254,9 +255,19 @@ CREATE TABLE `users` (
   `pass` varchar(255) NOT NULL,
   `user_role` tinyint(4) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NULL DEFAULT NULL,
   `user_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`first_name`, `last_name`, `middle_name`, `extension`, `username`, `photo`, `contact_number`, `email`, `account_status`, `pass`, `user_role`, `created_at`, `modified`, `user_id`) VALUES
+('Jerrie', 'MacFayden', NULL, NULL, 'jerriemacfayden1701248782_46045f90', NULL, '09123381013', 'jmacfaydena@fda.gov', NULL, '$2y$10$3t2ml5Lj/X4.9vjHehqm6.YyTyiygqD4ZPzMIQFffs7c5tDxEw85q', 2, '2023-11-29 10:51:23', NULL, 1),
+('Lenora', 'Proffitt', NULL, NULL, 'lenoraproffitt1701255899_8ecfba49', NULL, '09283850592', 'lproffitt8@examiner.com', NULL, '$2y$10$OYcalbixiMJEa2lti1na2uTlUYhQnz2ms6MJ7kDIM9C9zjoartITS', 2, '2023-11-29 11:11:00', NULL, 2),
+('Creight', 'Leyson', NULL, NULL, 'creightleyson1701257092_45b03d94', NULL, '09670654118', 'cleyson0@chicagotribune.com', NULL, '$2y$10$sZ5Taaynb/E8yk2EKQrDuOHwu.UCZx0UX7xK3NTjjN8e47tBCIlXq', 1, '2023-11-29 11:24:52', NULL, 3),
+('Herrick', 'Pittman', NULL, NULL, 'herrickpittman1701314679_e904ecea', NULL, '09201919204', 'hpittman1@jigsy.com', NULL, '$2y$10$NPvoh3luzc.frgQcIZpvd.DlohfCwJt3137aYZ58CMMDv3kLqWF/W', 1, '2023-11-30 03:24:40', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -270,6 +281,14 @@ CREATE TABLE `vendorshop` (
   `user_id` bigint(20) DEFAULT NULL,
   `vendor_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vendorshop`
+--
+
+INSERT INTO `vendorshop` (`shop_name`, `Shop_description`, `user_id`, `vendor_id`) VALUES
+('Fresh Mart Grocery', 'A family-owned grocery store with fresh produce and friendly staff', 3, 1),
+('Retail Oasis', 'A trendy boutique offering the latest fashion trends.', 4, 2);
 
 --
 -- Indexes for dumped tables
@@ -405,7 +424,7 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `brand_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `brand_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -477,13 +496,13 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vendorshop`
 --
 ALTER TABLE `vendorshop`
-  MODIFY `vendor_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `vendor_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
