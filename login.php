@@ -7,7 +7,12 @@ ini_set('display_errors', 1);
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';?>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';?>
-
+<?php
+if(isset($_SESSION['admin']))
+{
+  header('Location:admin/dashboard');
+}
+?>
 <?php
 
 if(isset($_POST['login']))
@@ -70,7 +75,7 @@ if(isset($_POST['login']))
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index">TABO-AN</a>
+        <a class="navbar-brand" href="index">TABOAN</a>
         <button
           class="navbar-toggler"
           type="button"
