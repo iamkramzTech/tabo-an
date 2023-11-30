@@ -29,7 +29,7 @@ $(function() {
     $(document).on('click', '.btn', function() {
         //console.log('Button clicked.');
         // Show the "Add Brand" modal
-        $('#addBrandModal').modal('show');
+        $('#addProductModal').modal('show');
     });
    //  $(document).on('click', '.close', function() {
    //    $('#addBrandModal').modal('hide');

@@ -1,24 +1,28 @@
-<?php
+<?php 
 include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';
-
-
-// if(!isset($_SESSION['vendor']) || trim($_SESSION['vendor'])=='')
-// {
-//    header("Location:../404");
-// }
-// else
-// {
-//     $fetchId = $_SESSION['vendor'];
-// }
+include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';
 ?>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';?>
+
+<?php
+// Retrieve userID from the query string
+$getID = isset($_GET['userID']) ? $_GET['userID'] : null;
+
+// Validate and use the userID as needed
+if (!is_numeric($getID) || $getID <= 0)
+{
+    // Handle invalid or missing userID
+    echo "Invalid or missing userID";
+    exit();
+}
+?>
+
 
 <?php
 
 
 if(isset($_POST['submit']))
 {
-    $userId = $fetchId;
+    $userID = $getID;
     $shopName = $_POST['shopname'];
     $shopDesc = $_POST['shopdesc'];
 
@@ -35,10 +39,10 @@ if(!empty($shopName) && !empty($shopDesc))
     //Bind parameter
    
     //execute Query
-    $statement->execute([$shopName, $shopDesc,$userId]);
+    $statement->execute([$shopName, $shopDesc,$userID]);
 
     $_SESSION['success'] ='Sucessful setup.';
-    header('Location:merchants/dashboard');
+    header('Location:dashboard');
     
 }
 

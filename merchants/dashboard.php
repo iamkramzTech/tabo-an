@@ -3,10 +3,10 @@
 include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';
 
 
-// if(!isset($_SESSION['vendor']) || trim($_SESSION['vendor'])=='')
-// {
-//    header("Location:../404");
-// }
+if(!isset($_SESSION['vendor']) || trim($_SESSION['vendor'])=='')
+{
+   header("Location:../404");
+}
 ?>
 <?php include('../merchants/includes/header.php')?>
   <body>   
@@ -22,13 +22,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';
       <div class="dropdown">
         <a class="nav-link dropdown-toggle px-3" href="#" role="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="bi bi-person"></i>
-sss
+<?php  echo($_SESSION['vendor']);?>
         </a>
         <ul class="dropdown-menu" aria-labelledby="accountDropdown">
           <li><a class="dropdown-item" href="#">My Profile</a></li>
          
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
+          <li><a class="dropdown-item" href="../signout">Sign out</a></li>
         </ul>
       </div>
     </div>
@@ -54,7 +54,7 @@ sss
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#products" onclick="loadContent('products.php')">
               <span data-feather="shopping-cart" class="align-text-bottom"></span>
               Products
             </a>
@@ -139,7 +139,7 @@ sss
     <div class="row">
         <!-- Vendors Box -->
         <div class="col-lg-3">
-        <a href="#vendors" class="text-decoration-none">
+        <a href="#orders" class="text-decoration-none">
             <div class="card bg-info text-white">
                 <div class="card-body">
                     <h5 class="card-title">Orders</h5>
@@ -151,7 +151,7 @@ sss
 
         <!-- Customers Box -->
         <div class="col-lg-3">
-        <a href="#customers" class="text-decoration-none">
+        <a href="#products" class="text-decoration-none" onclick="loadContent('products.php')">
             <div class="card bg-warning text-white">
                 <div class="card-body">
                     <h5 class="card-title">Products</h5>
@@ -162,7 +162,7 @@ sss
         </div>
          <!-- Products Box -->
          <div class="col-lg-3">
-         <a href="#products" class="text-decoration-none">
+         <a href="#customers" class="text-decoration-none">
             <div class="card bg-success text-white">
                 <div class="card-body">
                     <h5 class="card-title">Customer</h5>
