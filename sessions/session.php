@@ -21,7 +21,7 @@ function redirect($userId,$role) {
     case 1:
         //vendor
         $_SESSION['vendor'] = $userId;
-        header('Location:merchants/shop-setup');
+        header("Location:merchants/shop-setup?userID=$userId");
         break;
 
     case 2:
@@ -31,6 +31,7 @@ function redirect($userId,$role) {
         break;
     default:
         //account type not found
+        $_SESSION['errors'] = ["Invalid user role!"];
         header('Location:my-account');
         exit();
         
