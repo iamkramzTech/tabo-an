@@ -17,12 +17,12 @@ function validatePass($pass, $confirm)
         } 
         else 
         {
-            $_SESSION['error'] = 'Password must be at least 8 characters long';
+           $_SESSION['error'] = 'Password must be at least 8 characters long';
         }
     } 
     else 
     {
-        $_SESSION['error'] = 'Passwords do not match';
+         $_SESSION['error'] = 'Passwords do not match';
     }
     
     return false; // Indicate failure
