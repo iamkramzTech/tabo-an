@@ -36,7 +36,8 @@
    <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 
-
-
+<script>
+const carousel = new bootstrap.Carousel('#carouselExampleDark');
+</script>
   </body>
   </html>

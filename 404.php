@@ -1,5 +1,7 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';?>
-
+<head>
+  <title>404 Not Found</title>
+</head>
 <body>
 
   <main>

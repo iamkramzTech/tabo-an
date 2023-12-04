@@ -10,35 +10,86 @@
 
 <script>
 
-const loadContent = (page)=>{
-   const xhttp = new XMLHttpRequest();
-   xhttp.onreadystatechange = function(){
-      if(this.readyState==4 && this.status==200)
-      {
-         document.getElementById("content").innerHTML = this.responseText;
-      }
-   };
-   xhttp.open("GET",page,true);
-   xhttp.send();
-}
+const loadContent = async (page) => {
+    try {
+        const response = await fetch(page);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-$(function() {
-    //console.log('Script is executed.');
+        const data = await response.text();
+        document.getElementById("content").innerHTML = data;
+    } catch (error) {
+        console.error('Error fetching content:', error);
+    }
+};
+
+// $(function() {
+//     //console.log('Script is executed.');
     
-    // Use event delegation for dynamically added elements
-    $(document).on('click', '.btn', function() {
-        //console.log('Button clicked.');
-        // Show the "Add Brand" modal
-        $('#addProductModal').modal('show');
-    });
-   //  $(document).on('click', '.close', function() {
-   //    $('#addBrandModal').modal('hide');
-   //  });
+//     // Use event delegation for dynamically added elements
+//     $(document).on('click', '.btn', function() {
+//         //console.log('Button clicked.');
+//         // Show the "Add Brand" modal
+//         $('#addProductModal').modal('show');
+//     });
+//    //  $(document).on('click', '.close', function() {
+//    //    $('#addBrandModal').modal('hide');
+//    //  });
 
-   //Category MOdal
-   $(document).on('click', '#addCategoryButton', function() {
-      $('#addCategoryModal').modal('show');
-   });
-});
+//    //Category MOdal
+//    $(document).on('click', '#addCategoryButton', function() {
+//       $('#addCategoryModal').modal('show');
+//    });
+// });
+</script>
+
+
+<!-- <script>
+    $(document).ready(function () {
+        $("#AddProduct").click(function () {
+            // Serialize the form data
+            var formData = $("#addProductForm").serialize();
+
+            // Submit the form asynchronously using AJAX
+            $.ajax({
+                type: "POST",
+                url: "add-product-sample.php",
+                data: formData,
+                success: function (response) {
+                    // Update the content on the dashboard page
+                    $("#content").html(response);
+                },
+                error: function () {
+                    alert("Error submitting form.");
+                }
+            });
+        });
+    });
+</script> -->
+
+
+<script>
+    $(document).ready(function () {
+        $("#AddProduct").click(function () {
+            // Serialize the form data
+            var formData = $("#addProductForm").serialize();
+
+            // Submit the form asynchronously using AJAX
+            $.ajax({
+                type: "POST",
+                url: "add-product-sample.php",
+                data: formData,
+                success: function (response) {
+                    // Update the content on the dashboard page
+                    $("#content").html(response);
+                },
+                error: function () {
+                    alert("Error submitting form.");
+                }
+            });
+        });
+    });
 </script>
 

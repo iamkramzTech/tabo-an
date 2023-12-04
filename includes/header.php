@@ -21,12 +21,28 @@ rel="stylesheet"
 <!--ecommerce template css based on BS5-->
 
 <link rel="stylesheet" href="/kramzcommerce/assets/css/template.css"/>
+<link rel="stylesheet" href="/kramzcommerce/assets/css/checkout.css"/>
 <style>
 html,
 body {
   height: 100%;
 }
+/*carousel*/
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
 
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+}
+
+/*/carousel*/
 .form-signin {
   max-width: 330px;
   padding: 1rem;

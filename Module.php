@@ -28,5 +28,19 @@ function validatePass($pass, $confirm)
     return false; // Indicate failure
 }
 
+//login
+function verifyPass($pass, $hash)
+{
+    if(password_verify($pass,$hash))
+    {
+        //Password Match
+        return true;
+    }
+    else
+    {
+        //Password does not match
+        return false;
+    }
+}
 
 ?>

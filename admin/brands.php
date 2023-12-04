@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
-<?php require_once($_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/database/database.php');?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';?>
 <?php
 //brands code
 // FETCH data from the "brands" table
@@ -43,8 +43,8 @@ $brands = $statement->fetchAll(PDO::FETCH_ASSOC);
               <td><?=$brand['brand_slug']?></td>
               <td><?=$brand['brand_image']?></td>
               <td>
-                <button type="button" id="update" class="btn btn-success mr-auto">Update</button>
-                <button type="button" id="delete" class="btn btn-danger">Delete</button>
+                <button type="button" id="edit" class="btn btn-success mr-auto" data-id="<?=$brand['brand_id']?>">Edit</button>
+                <button type="button" id="delete" class="btn btn-danger" data-id="<?=$brand['brand_id']?>">Delete</button>
             </td>
             </tr>
             <?php endforeach; ?>
@@ -80,15 +80,15 @@ $brands = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <input type="file" accept="image/png, image/jpeg" class="form-control" name="brandImage" id="brandImage" required>
                     <label for="brandName">Choose Image:</label>   
                 </div>
-                    <!-- Add other form fields as needed -->
-                 <!-- Display success or error messages here -->
-                 <div id="messageContainer"></div>
             
             <div class="modal-footer">
             
             <button type="submit" name="save" id="save" class="btn btn-primary py-2 mr-auto">Save</button>
             <button type="button" id="cancel" data-bs-dismiss="modal" class="btn btn-secondary py-2">Cancel</button>
             </form>
+              <!-- Add other form fields as needed -->
+                 <!-- Display success or error messages here -->
+                 <div id="messageContainer"></div>
             </div>
         </div>
     </div>

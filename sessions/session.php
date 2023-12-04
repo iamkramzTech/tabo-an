@@ -27,7 +27,7 @@ function redirect($userId,$role) {
     case 2:
         //customer
         $_SESSION['customer'] = $userId;
-        header('Location:user-profile');
+        header('Location:index');
         break;
     default:
         //account type not found
@@ -36,6 +36,26 @@ function redirect($userId,$role) {
         exit();
         
  }
+}
+
+function userLogin($userId, $role)
+{
+    if($role==2)
+    {
+        //customer
+        $_SESSION['customer'] = $userId;
+        header('Location:index');
+        exit();
+    }
+    if($role==1)
+    {
+         //vendor
+         $_SESSION['vendor'] = $userId;
+
+         
+         header("Location:merchants/dashboard");
+         exit();
+    }
 }
 
 // Function to log out a user

@@ -18,12 +18,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     if (isset($_POST['login'])) 
     {
-        // // Login form submitted
-        // $loginEmail = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
-        // $loginPassword = $_POST['password'];
+        // Login form submitted
+        $loginEmail = filter_var(trim($_POST['loginEmail']),FILTER_VALIDATE_EMAIL);
+        $loginPassword = $_POST['loginPassword'];
 
-        // // Perform login validation and authentication
-        // // Add your login authentication logic here
+        if(!empty($loginEmail) && !empty($loginPassword))
+        {
+            $query = "SELECT * FROM users WHERE email=:email LIMIT 1";
+            //Prepare the statement
+            $statement = $dbConn->prepare($query);
+
+            //Bind parameter
+            $statement->bindparam(':email', $loginEmail,PDO::PARAM_STR);
+
+            //execute Query
+            $statement->execute();
+
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+            if($user)
+            {
+                $auth = verifyPass($loginPassword,$user['pass']);
+                if($auth===false)
+                {
+                    $_SESSION['errors'] = ['Incorrect email or password. Please try again.'];
+                }
+                else
+                {
+                    // Login successful
+                    $id = $user['user_id'];
+                    $role = $user['user_role'];
+                    userLogin($id,$role);
+                }
+            }
+            else
+            {
+                $_SESSION['errors']="Account not found.";
+            }
+        }
 
         // // Example authentication using a simple check (replace this with your actual authentication logic)
         // $authenticated = true; // Replace with your authentication logic
@@ -53,7 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
         // Check which radio button is selected
         $userType = isset($_POST['btnradio']) ? ($_POST['btnradio'] == 'vbtn-customer' ? 2 : 1) : '';
-
         // Perform basic validation
         if (empty($fname) || empty($lname) || empty($email) || empty($phone) || empty($password) || empty($confirmPass) || empty($userType)) 
         {
@@ -62,7 +93,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         } 
         else 
         {
-            // Validate password and set errors in session
+
+         // Check if the email already exists in the database
+            $existingEmailQuery = "SELECT COUNT(*) FROM users WHERE email = :email";
+            $existingEmailStatement = $dbConn->prepare($existingEmailQuery);
+            $existingEmailStatement->bindParam(':email', $email, PDO::PARAM_STR);
+            $existingEmailStatement->execute();
+            $existingEmailCount = $existingEmailStatement->fetchColumn();
+
+            if($existingEmailCount > 0)
+            {
+                 // Handle validation error, set errors in session
+            $_SESSION['errors'] = ['Email address already exist.'];
+            }
+
+            else
+            {
+                // Validate password and set errors in session
             $hashPassword = validatePass($password, $confirmPass);
             if ($hashPassword === false) 
             {
@@ -119,6 +166,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 //     $_SESSION['errors'] = ["Invalid user role!"];
                 // }
             }
+            }
+            
         }
     
     }
@@ -162,13 +211,13 @@ unset($_SESSION['errors']); // Clear errors from session
                         <main class="form-signin">
                             <img class="mb-4" src="/kramzcommerce/assets/logo/account-icon.svg" alt="" width="72" height="57"/>
                             <h1 class="h3 mb-3 fw-normal">Login</h1>
-                            <form>
+                            <form method="POST" action="">
                                 <div class="form-floating mb-4">
-                                    <input class="form-control" type="email" id="signupEmail" name="email" placeholder="yourname@example.com" required/>
+                                    <input class="form-control" type="email" id="loginEmail" name="loginEmail" placeholder="yourname@example.com" required/>
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <input type="password" class="form-control" id="signupPassword" name="password" placeholder="Password" required/>
+                                    <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password" required/>
                                     <label for="password">Password</label>
                                 </div>
                                 <button type="submit" name="login" id="login" class="btn btn-outline-dark w-100 py-2">Login</button>

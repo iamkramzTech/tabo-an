@@ -20,16 +20,66 @@ include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';
    ?>
 <!--/navbar-->
     <!-- body Header mura ug slider-->
-    <header class="bg-dark py-5">
-      <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
+    <!-- <header class="bg-dark py-5">
+      <div class="container px-4 px-lg-5 my-5"> -->
+        <!-- <div class="text-center text-white">
           <h1 class="display-4 fw-bolder">Shop in style</h1>
           <p class="lead fw-normal text-white-50 mb-0">
             With this shop hompeage template
           </p>
+        </div> -->
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#212529"/></svg>
+
+        <div class="container">
+          <div class="carousel-caption">
+            <h1 class="text-white">Online Shopping</h1>
+            <p class="lead fw-normal text-white-50 mb-0">An e-commerce website to improve the marketing strategy of various SME businesses in the Municipality of Anahawan.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Shop now</a></p>
+          </div>
         </div>
       </div>
-    </header>
+      <div class="carousel-item" data-bs-interval="2000">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#212529"/></svg>
+
+        <div class="container">
+          <div class="carousel-caption">
+          <h1 class="text-white">For more information</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Don't hesitate to reach out.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Contact us</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#212529"/"/></svg>
+
+        <div class="container">
+          <div class="carousel-caption">
+          <h1 class="text-white">Buying and Selling</h1>
+            <p class="lead fw-normal text-white-50 mb-0">We offer Products you need.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Learn More</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+      <!-- </div>
+    </header> -->
     <!-- Section-->
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">

@@ -1,0 +1,73 @@
+<!--Add Product Modal-->
+
+<!-- Modal for adding new Product -->
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Your form for adding a new Product goes here -->
+                <!-- For example: -->
+                <form action="add-product.php" method="POST" id="addProductForm" enctype="multipart/form-data">
+                <div class="form-floating mb-4">
+                   
+                    <input type="text" class="form-control" name="productName" id="productName" required>
+                    <label for="productName">Product Name:</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                   
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="productdesc" style="height: 100px" required></textarea>
+                    <label for="productName">Description:</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                   
+                    <input type="number" class="form-control" name="qty" id="qty" required>
+                    <label for="productName">Quantity:</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                   
+                    <input type="text" class="form-control" name="price" id="price" required>
+                    <label for="productName">Price $0.00:</label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                    <select class="form-select" id="category" name="category" aria-label="Floating label select example">
+                     <option selected disabled>--Choose Category--</option>
+                     <?php foreach ($categories as $index=>$cat):?>
+                    <option value="<?=$cat['category_id']?>"><?=$cat['name']?></option>
+                    <?php endforeach; ?>
+                    </select>
+                    <!-- <label for="productName">Product Name:</label> -->
+                    </div>
+                    <div class="form-floating mb-4">
+                    <select class="form-select" id="brand" name="brand" aria-label="Floating label select example">
+                     <option selected disabled>--Choose Brand--</option>
+                     <?php foreach ($brands as $index=>$brand):?>
+                    <option value="<?=$brand['brand_id']?>"><?=$brand['brand_name']?></option>
+                    <?php endforeach; ?>
+                    </select>
+                    <!-- <label for="productName">Product Name:</label> -->
+                    </div>
+                    <div class="form-floating mb-4">
+                    
+                    <input type="file" accept="image/png, image/jpeg" class="form-control" name="productImage[]" id="ProductImage" multiple required>
+                    <label for="productImage">Choose Image:</label>   
+                </div>
+                    <!-- Add other form fields as needed -->
+                 <!-- Display success or error messages here -->
+                 <div id="messageContainer"></div>
+            
+            <div class="modal-footer">
+            
+            <button type="submit" name="save" id="save" class="btn btn-primary py-2 mr-auto">Save</button>
+            <button type="button" id="cancel" data-bs-dismiss="modal" class="btn btn-secondary py-2">Cancel</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

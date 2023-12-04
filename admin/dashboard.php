@@ -142,7 +142,7 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
             <div class="card bg-info text-white">
                 <div class="card-body">
                     <h5 class="card-title">Vendors</h5>
-                    <p class="card-text">Total: 00</p>
+                    <p class="card-text">Total: 2</p>
                 </div>
             </div>
 </a>
@@ -154,7 +154,7 @@ if(!isset($_SESSION['admin']) || trim($_SESSION['admin'])=='')
             <div class="card bg-warning text-white">
                 <div class="card-body">
                     <h5 class="card-title">Customers</h5>
-                    <p class="card-text">Total: 00</p>
+                    <p class="card-text">Total: 2</p>
                 </div>
             </div>
 </a>

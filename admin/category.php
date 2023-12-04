@@ -41,8 +41,8 @@ $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
               <td><?=$category['name']?></td>
               <td><?=$category['slug']?></td>
               <td>
-                <button type="button" id="update" class="btn btn-success mr-auto">Update</button>
-                <button type="button" id="delete" class="btn btn-danger">Delete</button>
+                <button type="button" id="update" class="btn btn-success mr-auto" data-id="<?=$category['id']?>">Edit</button>
+                <button type="button" id="delete" class="btn btn-danger" data-id="<?=$category['id']?>">Delete</button>
             </td>
             </tr>
             <?php endforeach; ?>

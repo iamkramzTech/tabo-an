@@ -1,33 +1,9 @@
-<?php 
-// Enable error reporting for debugging (remove in production)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
 <?php require_once($_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/database/database.php');?>
 <?php
-
- $file = $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/slugify.php';
-//  print_r($file);
- include($file);
+ include($_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/slugify.php');
 ?>
 
 <?php
-
-/** --------------------------------
- * 
- * “When I wrote this code, only God and I understood what I did. Now only God knows.”
- * 
- *  Total time waste: 24 hours
- * ----------------------------------
-**/
-
-
-// $brand_name = 'Nestle';
-
-// $slug = slugify($brand_name);
-
-// print_r($slug);
-// print_r($dbConn);
 
 header('Content-Type: application/json'); // Set content type to JSON
 
@@ -35,8 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 
     // Validate and sanitize input (you should customize this based on your requirements)
-    $brandName = filter_var($_POST["brandName"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $slug = slugify($brandName);
+    $productName = filter_var($_POST["productName"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $slug = slugify($productName);
+    $desc = filter_var($_POST["productdesc"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $qty = $_POST['qty'];
+    $price = filter_var($_POST["price"], FILTER_SANITIZE_NUMBER_INT);
+    $category = $_POST['category'];
+    
     $brandImage = $_FILES['brandImage']['name'];
     $uploadDir = '../wp-image/';
 
