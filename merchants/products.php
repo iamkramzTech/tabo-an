@@ -5,13 +5,13 @@ ini_set('display_errors', 1);
 ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';?>
 <?php
- $vendorID = $_SESSION['vendor'];
+ $vendorID = $_SESSION['vendor_shop_id'];
 $query = "
 SELECT 
     p.*,
     b.brand_name AS brand_name,
     c.name AS category_name,
-    pi.product_image
+    GROUP_CONCAT(pi.product_image) AS product_images
 FROM 
     products p
 JOIN 
@@ -21,7 +21,8 @@ JOIN
 LEFT JOIN 
     productimages pi ON p.product_id = pi.product_id
 WHERE 
-    p.vendor_id = :vendorID;
+    p.vendor_id = :vendorID
+GROUP BY p.product_id;
 ";
 
 //Prepare the statement
@@ -76,7 +77,7 @@ $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="content">
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h2 class="h2">Product List</h2>
+    <h2 class="h2">View Products</h2>
 </div>
 
 <div class="table-responsive">
@@ -102,15 +103,15 @@ $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
             <td><?=$index+1?></td>
               <td><?=$product['product_name']?></td>
               <td><?=$product['slug']?></td>
-              <td><?=$product['short_desc']?></td>
+              <td><?=$product['short_description']?></td>
               <td><?=$product['quantity']?></td>
-              <td><?=$product['category']?></td>
+              <td><?=$product['category_name']?></td>
               <td><?=$product['price']?></td>
-              <td><?=$product['brand']?></td>
-              <td><?=$product['product_image']?></td>
+              <td><?=$product['brand_name']?></td>
+              <td><?=$product['product_images']?></td>
               <td>
-                <button type="button" id="edit" class="btn btn-success mr-auto" data-id="">Edit</button>
-                <button type="button" id="delete" class="btn btn-danger" data-id="">Delete</button>
+                <button type="button" id="edit" class="btn btn-success mr-auto" data-id=""><span data-feather="edit" class="align-text-bottom"></span>Edit</button>
+                <button type="button" id="delete" class="btn btn-danger" data-id=""><span data-feather="trash-2" class="align-text-bottom"></span>Delete</button>
             </td>
             </tr>
             <?php endforeach; ?>

@@ -52,7 +52,7 @@ function userLogin($userId, $role)
          //vendor
          $_SESSION['vendor'] = $userId;
 
-         
+         $_SESSION['vendor_shop_id'] = null;
          header("Location:merchants/dashboard");
          exit();
     }

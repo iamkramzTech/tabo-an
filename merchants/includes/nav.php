@@ -10,7 +10,7 @@
       <div class="dropdown">
         <a class="nav-link dropdown-toggle px-3" href="#" role="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="bi bi-person"></i>
-<?php  echo($_SESSION['vendor']);?>
+<?php  echo( $_SESSION['vendor_shop_id']);?>
         </a>
         <ul class="dropdown-menu" aria-labelledby="accountDropdown">
           <li><a class="dropdown-item" href="#">My Profile</a></li>

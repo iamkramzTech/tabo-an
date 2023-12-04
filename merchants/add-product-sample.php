@@ -22,7 +22,7 @@ if(isset($_POST['addProduct']))
     $brand = $_POST['brand'];
     $category = $_POST['category'];
 
-    $vendorID = $_SESSION['vendor'];
+    $vendor_shop_id = $_SESSION['vendor_shop_id'];
   
     if(empty($productName) ||empty($desc) || empty($qty) || empty($price) || empty($brand) || empty($brand) || empty($category))
     {
@@ -36,7 +36,7 @@ if(isset($_POST['addProduct']))
         //check if product already exists
         $statement = $dbConn->prepare("SELECT COUNT(*) AS productRows FROM products WHERE slug=:slug AND vendor_id=:vendor_id");
         $statement->bindParam(':slug',$slug,PDO::PARAM_STR);
-        $statement->bindParam(':vendor_id',$vendorID,PDO::PARAM_INT);
+        $statement->bindParam(':vendor_id',$vendor_shop_id,PDO::PARAM_INT);
         $statement->execute();
 
         $prodExist = $statement->fetch(PDO::FETCH_ASSOC);
@@ -61,7 +61,7 @@ if(isset($_POST['addProduct']))
             $statement->bindParam(':price',$price);
             $statement->bindParam(':category_id', $category,PDO::PARAM_INT);
             $statement->bindParam(':brand_id', $brand,PDO::PARAM_INT);
-            $statement->bindParam(':vendor_id', $vendorID,PDO::PARAM_INT);
+            $statement->bindParam(':vendor_id', $vendor_shop_id,PDO::PARAM_INT);
 
             //execute Query
             $statement->execute();
@@ -73,25 +73,42 @@ if(isset($_POST['addProduct']))
             // Handle multiple product images upload
              $uploadDir = '../wp-image/';
 
-             foreach($_FILES['productPhotos']['tmp_name'] as $key=>$tmp_name)
+             if (count($_FILES['productPhotos']['name']) > 0)
              {
-                $uploadFile = $uploadDir . basename($_FILES['productPhotos']['name'][$key]);
-                if(move_uploaded_file($tmp_name,$uploadFile))
+                 // Perform the insertion into the 'productImage' table
+                 $insertImgQuery = "INSERT INTO productimages(product_image, product_id) VALUES (:product_image, :product_id)";
+                 $stmt = $dbConn->prepare($insertImgQuery);
+                foreach($_FILES['productPhotos']['tmp_name'] as $key=>$tmp_name)
                 {
-                    // Perform the insertion into the 'productImage' table
-                    $insertImgQuery = "INSERT INTO productimages(product_image, product_id) VALUES (:product_image, :product_id)";
-                    $stmt = $dbConn->prepare($insertImgQuery);
-                    $stmt->bindParam(':product_image',$_FILES['productPhotos']['name'][$key]);
-                    $stmt->bindParam(':product_id',$productID);
+                    $productImages = $_FILES['productPhotos']['name'][$key];
+                    $ext = pathinfo($productImages, PATHINFO_EXTENSION);
+                    $newFileName = $slug . '_' . $key . '.' . $ext;
 
-                    //execute insert query productimages
-                    $stmt->execute();
-                }
-                else
-                {
-                    $_SESSION['errors'] = ['Failed to upload one or more product images'];
+                    // Check if the file was uploaded without errors
+                    if($_FILES['productPhotos']['error'][$key]==UPLOAD_ERR_OK)
+                    {
+                        $uploadPath = $uploadDir . $newFileName;
+
+                         // Move the uploaded file to the desired location
+                         move_uploaded_file($tmp_name, $uploadPath);
+                         $stmt->bindParam(':product_image',$newFileName);
+                         $stmt->bindParam(':product_id',$productID);
+     
+                         //execute insert query productimages
+                         $stmt->execute();
+
+                    }
+                    else
+                    {
+                        $_SESSION['errors'] = ['Failed to upload Images'];
+                    }
                 }
              }
+             else
+             {
+                $_SESSION['errors'] = ['No Files were uploaded!'];
+             }
+
              $_SESSION['success'] = ['Product added successfully!'];
         }
     }
@@ -174,7 +191,7 @@ $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
                       <h3 class="card-title">Add Product</h3>
                   </div>
                   <div class="card-body">
-                      <form id="addProductForm" method="POST">
+                      <form id="addProductForm" method="POST" enctype="multipart/form-data">
                           <!-- Form content remains the same as before -->
   
                           <!-- Example: Reducing the width of the form fields -->
@@ -191,7 +208,7 @@ $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
        <!-- Add support for multiple photos -->
                           <div class="mb-3">
                               <label for="productPhotos" class="form-label">Product Photos</label>
-                              <input type="file" class="form-control" id="productPhotos" name="productPhotos[]" multiple required>
+                              <input type="file" class="form-control" id="productPhotos" name="productPhotos[]" multiple accept="image/*" required>
                           </div>
                        <div class="row">
                       <div class="col-md-6 mb-3">

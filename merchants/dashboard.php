@@ -7,6 +7,34 @@ if(!isset($_SESSION['vendor']) || trim($_SESSION['vendor'])=='')
 {
    header("Location:../404");
 }
+else
+{
+  //Beginning of the code to fetch the vendor_id based on the user session login.
+  /*To fix Integrity constraint error when adding product product.vendor_id 
+  *references to vendorshop.vendor_id.
+  */
+  $vendorQuery = "SELECT users.user_id, vendorshop.vendor_id, vendorshop.shop_name FROM users
+  JOIN vendorshop ON users.user_id = vendorshop.user_id
+  WHERE users.user_id = :user_id";
+
+  $stmt = $dbConn->prepare($vendorQuery);
+
+  $stmt->bindParam(':user_id',$_SESSION['vendor'],PDO::PARAM_INT);
+
+  $stmt->execute();
+
+  $vendorShopID = $stmt->fetch(PDO::FETCH_ASSOC);
+  if($vendorShopID)
+  {
+    $_SESSION['vendor_shop_id'] = $vendorShopID['vendor_id'];
+  }
+  else
+  {
+    $mess = 'Proceed Shop setup';
+    echo($mess);
+  }
+  //End of the code to fetch...Not sure if will work and no bugs😥
+}
 ?>
 <?php include('../merchants/includes/header.php')?>
   <body>   
