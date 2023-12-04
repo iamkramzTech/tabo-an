@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2023 at 04:34 AM
+-- Generation Time: Dec 04, 2023 at 04:53 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.2.11
 
@@ -62,7 +62,9 @@ CREATE TABLE `brand` (
 INSERT INTO `brand` (`brand_name`, `brand_image`, `brand_slug`, `brand_id`) VALUES
 ('PureFoods', 'purefoods.jpg', 'purefoods', 1),
 ('No Brand', 'noimage.jpg', 'no-brand', 2),
-('Magnolia', 'Magnolia.jpg', 'magnolia', 3);
+('Magnolia', 'Magnolia.jpg', 'magnolia', 3),
+('Virginia', 'virginia brand.jpg', 'virginia', 4),
+('Lucky Me', 'Luckyme.jpg', 'lucky-me', 5);
 
 -- --------------------------------------------------------
 
@@ -168,6 +170,16 @@ CREATE TABLE `productimages` (
   `image_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `productimages`
+--
+
+INSERT INTO `productimages` (`product_image`, `product_id`, `image_id`) VALUES
+('fresh-ripe-mango_0.jpg', 4, 1),
+('fresh-ripe-mango_1.jpeg', 4, 2),
+('fresh-raw-vegetables_0.jpeg', 5, 3),
+('fresh-raw-vegetables_1.jpeg', 5, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -201,6 +213,16 @@ CREATE TABLE `products` (
   `vendor_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_name`, `slug`, `short_description`, `long_description`, `quantity`, `price`, `status`, `category_id`, `brand_id`, `vendor_id`, `product_id`) VALUES
+('GREEN EARTH YELLOW MANGO 1kg', 'green-earth-yellow-mango-1kg', 'A Guaranteed Fresh and Quality mango fruit with packaging/size: 1kg.', NULL, 1000, 60, NULL, 3, 2, 1, 2),
+('Fresh Fruit Peach', 'fresh-fruit-peach', 'A Guaranteed Fresh and Quality Peach fruit.', NULL, 100, 60, NULL, 3, 2, 1, 3),
+('Fresh Ripe Mango', 'fresh-ripe-mango', 'Sample Description:  fresh mango with sweet taste.', NULL, 10, 50, NULL, 3, 2, 1, 4),
+('Fresh Raw Vegetables', 'fresh-raw-vegetables', 'Assortment of fresh raw vegetables isolated on white background. Tomato, cucumber, onion, salad, carrot, beetroot, potato.', NULL, 500, 220, NULL, 4, 2, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -424,7 +446,7 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `brand_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `brand_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -466,7 +488,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `productimages`
 --
 ALTER TABLE `productimages`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `productreviews`
@@ -478,7 +500,7 @@ ALTER TABLE `productreviews`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `producttags`

@@ -10,6 +10,11 @@ try {
 } catch (PDOException $e) {
     echo 'Connection error: '.$e->getMessage();
 }
+// finally
+// {
+//     // Close the connection to free up resources
+//     $dbConn = null;
+// }
 ?>
 
 
