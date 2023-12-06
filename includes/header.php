@@ -63,6 +63,11 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.feather {
+    width: 16px;
+    height: 16px;
+  }
 </style>
     <title>Anga Oy! | ecommerce</title>
 </head>

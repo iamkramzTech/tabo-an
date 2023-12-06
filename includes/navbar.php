@@ -19,8 +19,8 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="index">Home</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="pages/about" rel="noreferrer noopener" target="_blank">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/about">Shop</a></li>
+            <li class="nav-item"><a class="nav-link" href="about" rel="noopener" target="_blank">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
             <!-- <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"

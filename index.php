@@ -31,8 +31,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';
-// $file = $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';
-// print_r($file);
+
 ?>
 <body>
    <!--navbar-->
@@ -104,6 +103,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';
     <!-- Section-->
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
+      <h3>Available Products</h3>
+      <br>
         <div
           class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
         >
@@ -147,7 +148,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';
                         <!-- Product actions -->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto" href="#">View Product</a>
+                                <a class="btn btn-outline-dark mt-auto" href="product_details?slug=<?php echo $product['slug']; ?>">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -157,4 +158,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/header.php';
       </div>
     </section>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/scripts.php';?>
 </html>
