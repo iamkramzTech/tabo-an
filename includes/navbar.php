@@ -1,4 +1,3 @@
-
  <!-- Navigation-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -60,15 +59,44 @@
             </button>
           </form>
           <div class="d-flex ms-3">
-            <!-- <button class="btn btn-outline-dark" type="button">
-              <i class="bi-cart-fill me-1"></i>
-              Cart
-              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-            </button> -->
+            <?php
+            if(isset($_SESSION['customer']))
+            {
+              $stmt = $dbConn->prepare("SELECT * FROM users WHERE user_id=:user_id AND user_role=:user_role");
+              $stmt->bindParam(':user_id',$_SESSION['customer'],PDO::PARAM_INT);
+              $stmt->bindValue(':user_role',2,PDO::PARAM_INT);
+              $stmt->execute();
+              $userLogin = $stmt->fetch(PDO::FETCH_ASSOC);
+              echo'
+              <div class="dropdown">
+              <button class="btn btn-outline-dark dropdown-toggle" type="button" id="cartDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi-cart-fill me-1"></i>
+                  Cart
+                  <span class="badge bg-dark text-white ms-1 rounded-pill" id="cartItemCount">0</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="cartDropdown">
+                  <!-- Cart items go here -->
+                  <li><a class="dropdown-item" href="#">Item 1</a></li>
+                  <li><a class="dropdown-item" href="#">Item 2</a></li>
+                  <!-- Add more items dynamically based on the cart content -->
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="cart-view">View All</a></li>
+              </ul>
+          </div>
             <button class="btn btn-outline-dark ms-2" type="button">
-              
+            <a href="customer-profile" class="nav-link"><i class="bi-person"></i>'. $userLogin['first_name'].'</a>
+            </button>
+            ';
+            }
+            else
+            {
+              echo'
+              <button class="btn btn-outline-dark ms-2" type="button">
              <a href="my-account" class="nav-link"><i class="bi-person"></i> Account</a>
             </button>
+            ';
+            }
+            ?>
           </div>
         </div>
       </div>

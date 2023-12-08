@@ -3,13 +3,13 @@
 include $_SERVER['DOCUMENT_ROOT'].'/kramzcommerce/sessions/session.php';
 ?>
 <?php
-// Assuming you have a PDO connection established
+
 
 // Retrieve the product_id from the query string
 $productSlug = isset($_GET['slug']) ? $_GET['slug'] : null;
 
 if (!$productSlug) {
-    // Handle the case where no product_id is provided
+    // Handling the case where no product_id is provided
     echo "Invalid product ID.";
     exit;
 }
@@ -96,17 +96,18 @@ if (!$product) {
                 <!-- Quantity Input -->
                 <div class="input-group input-group-sm" data-quantity="data-quantity">
                   <button class="btn btn-sm btn-outline-secondary border border-300" data-field="input-quantity" id="decrementBtn" data-type="minus">-</button>
-                  <input class="form-control text-center input-quantity input-spin-none" type="number" min="1" value="1" aria-label="Amount (to the nearest dollar)" id="quantityInput" style="max-width: 50px" />
+                  <input class="form-control text-center input-quantity input-spin-none" type="number" name="quantity" min="1" value="1" aria-label="Amount (to the nearest dollar)" id="quantityInput" style="max-width: 50px" />
                   <button class="btn btn-sm btn-outline-secondary border border-300" data-field="input-quantity" id="incrementBtn" data-type="plus">+</button>
                 </div>
               </div>
               <div class="col-auto px-2 px-md-3">
-                <!-- Add to Cart Button -->
-                <a class="btn btn-outline-dark mt-auto" href="#!">
-                  <span class="fas fa-cart-plus me-sm-2"></span>
-                  <span class="d-none d-sm-inline-block">Add To Cart</span>
-                </a>
+               <!-- Add to Cart Button -->
+              <a class="btn btn-outline-dark mt-auto addToCart" href="#addcart" data-product-id="<?= $product['product_id'] ?>">
+                <span class="fas fa-cart-plus me-sm-2"></span>
+                <span class="d-none d-sm-inline-block">Add To Cart</span>
+              </a>
               </div>
+              
               <div class="col-auto px-0">
                 <!-- Wishlist Button -->
                 <!-- <a class="btn btn-sm btn-outline-danger border border-300" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Wish List">
@@ -203,6 +204,8 @@ if (!$product) {
     <!-- Related products go here -->
   </div>
 </section>
+
+</div>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/kramzcommerce/includes/scripts.php';?>
 </body>
    

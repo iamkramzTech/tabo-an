@@ -9,7 +9,7 @@
     feather.replace({ "aria-hidden": "true" });
     </script>
 <script>
-const carousel = new bootstrap.Carousel('#carouselExampleDark');
+const carousel = new bootstrap.Carousel('#productCarousel');
 </script>
 
 <!-- Navigation Script -->
@@ -49,3 +49,49 @@ const carousel = new bootstrap.Carousel('#carouselExampleDark');
   });
 </script>
 
+
+<!--cart-->
+
+<!-- Custom JavaScript -->
+<script>
+    $(document).ready(function() {
+        // Function to update the cart summary
+        function updateCartSummary() {
+            $.ajax({
+                type: 'GET',
+                url: 'cart_item_count.php', // Replace with the actual URL to fetch cart information
+                dataType: 'json',
+                success: function(response) {
+                  // Update the content of the span element with the retrieved item count
+                 $('#cartItemCount').text(response.itemCount);
+                },
+                error: function() {
+              // Handle error if the AJAX request fails
+              console.log('Error fetching cart item count');
+              }
+            });
+        }
+
+        // Handle add to cart button click
+        $('.addToCart').click(function() {
+            var productId = $(this).data('product-id');
+            $.ajax({
+                type: 'POST',
+                url: 'cart-trial.php',
+                data: { productId: productId },
+                dataType: 'json',
+                success: function(response) {
+                    alert(response.message);
+                    updateCartSummary();
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+
+        // Initial call to updateCartSummary() to load cart information on page load
+        updateCartSummary();
+    });
+    
+</script>
