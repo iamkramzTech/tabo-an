@@ -1,11 +1,12 @@
-# kramzcommerce
+# Technopreneur Application for Business Operation of Anahawnon (TABO-AN)
 
-SLSU - San Juan BS Information Technology 4th Yr. Students:
+A BS Information Technology 4th Yr. Students in Southern Leyte State University - San Juan Campus 
 
-- Arjon
-- Kiven
-- Eljay
-- Kramz
+1. Arjon B. Paler
+2. Kiven T. Danila
+3. Eljay B. Eroisa
+4. Mark Joseph M. Bernaldez (kramz)
+
 
 # Screenshot
 
