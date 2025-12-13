@@ -7,6 +7,16 @@ A BS Information Technology 4th Yr. Students in Southern Leyte State University 
 3. Eljay B. Eroisa
 4. Mark Joseph M. Bernaldez (kramz)
 
+## Tech Stack
+- PHP 8.2.11
+- MySQL / MariaDB
+- Apache 2.4.46
+
+## Development Environment
+- Windows: XAMPP (Apache + MySQL + PHP)
+- Linux: LAMP stack (Apache + MySQL + PHP)
+
+
 
 # Screenshot
 
